@@ -13,8 +13,8 @@ RUN PKG=$(ls /tmp | grep spark) && \
     chmod -R u+x $SPARK_HOME/sbin && \
     chmod -R u+x $SPARK_HOME/bin
 
-COPY ./conf/* $SPARK_HOME/conf
+COPY ./conf/* $SPARK_HOME/conf/
 
-COPY ./bin/* /opt/app/bin
+COPY ./bin/* /opt/app/bin/
 
 RUN chmod -R u+x /opt/app/bin
