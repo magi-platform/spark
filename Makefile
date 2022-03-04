@@ -1,7 +1,7 @@
 IMAGE_PREFIX = magiplatform
 IMAGE_NAME = spark
 IMG = $(IMAGE_PREFIX)/$(IMAGE_NAME)
-VERSION = latest
+VERSION = spark-3.1.2
 
 docker-build:
 	./download.sh
