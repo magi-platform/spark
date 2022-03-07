@@ -6,10 +6,14 @@ services:
     hostname: spark-master
     image: magiplatform/spark:latest
     entrypoint: /opt/app/bin/master.sh
+    environment:
+      SPARK_MASTER_HOST: spark-master
+      SPARK_CLUSTER_DEBUG: "true"
     ports:
       - "7077:7077"
       - "8080:8080"
       - "6066:6066"
+      - "5050:5050"
     networks:
       - spark
 
@@ -19,10 +23,11 @@ services:
     image: magiplatform/spark:latest
     entrypoint: /opt/app/bin/worker.sh
     environment:
-      - SPARK_MASTER_HOST=spark-master
+      SPARK_MASTER_HOST: spark-master
     ports:
       - "7078:7078"
       - "8081:8081"
+      - "5051:5050"
     depends_on:
       - spark-master
     networks:
@@ -34,10 +39,11 @@ services:
     image: magiplatform/spark:latest
     entrypoint: /opt/app/bin/worker.sh
     environment:
-      - SPARK_MASTER_HOST=spark-master
+      SPARK_MASTER_HOST: spark-master
     ports:
       - "7079:7078"
       - "8082:8081"
+      - "5052:5050"
     depends_on:
       - spark-master
     networks:
